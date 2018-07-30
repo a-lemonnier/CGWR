@@ -9,7 +9,7 @@
 //#include <boost/math/special_functions/factorials.hpp>
 //#include <boost/math/special_functions/powm1.hpp>
 
-/*
+/*********************************************************************
 - CG:
 < j1 j2 m1 m2 | J M >
 
@@ -33,27 +33,37 @@ Wigner 6j translated as array=[j1,j2,j3,l1,l2,l3] with _CGWR::C_W6j token
 or
 and so on with usual notations
 
-*/
+*********************************************************************/
 
 class _CGWR { // Clebsch-Gordan Wigner Racah
 public:
+    
     // Token
+    /***********/
     static const unsigned int C_CG;
     static const unsigned int C_W3j;
     static const unsigned int C_W6j;
     static const unsigned int C_W9j;
     static const unsigned int C_RACAH;
+    /***********/
 
+    
     // Init the class with the coeff and the token
+    /***********/
     _CGWR(double long [], unsigned int);
+    /***********/
 
     _CGWR& operator= ( const _CGWR& other ); //TODO
 
+    
+    // Public methods
+    /***********/
     double long CG(void);
     double long W3j(void);
     double long W6j(void);
     double long W9j(void); //TODO
     double long Racah(void);
+    /***********/
 
 private:
     double long j1, j2, j3, j;
@@ -62,15 +72,26 @@ private:
 
     unsigned int selected_Symb;
 
+    
     // mid computations
-    double long fact(double long ); // factorial
+    /***********/
+    long double fact ( long double n ); // factorial
     double long Delta(double long , double long , double long ); // triangle relation
     double long delta_k(double long , double long ); // kronecker
-    bool is_integer(double long ); // return true if interger
-    bool is_halfinteger(double long ); // return true if half interger
+  
+    // variadic
+    template<typename _T>
+    bool is_integer(_T n); // return true if integer
+    template<typename _T, typename ..._args>
+    bool is_integer(_T, _args...);
+    
+    template<typename _T>
+    bool is_halfinteger(_T); // return true if half integer
+    template<typename _T, typename ..._args>
+    bool is_halfinteger(_T, _args...);
+    /***********/
 
 };
 
 #endif // CGWR_HPP
 
-// The Theory of Atomic Structure and Spectra - Robert D. Cowan (1981)
