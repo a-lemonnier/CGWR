@@ -1,4 +1,4 @@
-# **CGWR** class
+# **CGWR** class [![Build Status](https://travis-ci.com/a-lemonnier/CGWR.svg?branch=master)](https://travis-ci.com/a-lemonnier/CGWR)
 
 Clebsch-Gordan, Wigner 3j and 6j and Racah.
 
