@@ -8,17 +8,11 @@ steps:
 - name: test
   image: gcc
   commands:
-    - /bin/bash -c "
-      source /opt/qt57/bin/qt57-env.sh &&
-      cd /tmp &&
-      git clone https://github.com/frankosterfeld/qtkeychain.git &&
-      cd qtkeychain &&
-      git checkout v0.9.1 &&
-      mkdir build &&
-      cd build &&
-      cmake ../ &&
-      make &&
-      make install"  
+  - git clone https://github.com/Kitware/CMake.git
+  - cd CMake
+  - ./configure
+  - make && make install
+  - cd ..
   - cmake .
   - make
   - ./wigner 
