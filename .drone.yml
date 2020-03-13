@@ -2,14 +2,15 @@ kind: pipeline
 name: build-and-test-amd64
 
 platform:
-  arch: amd64
+  os: linux
+  arch: arm64
 
 steps:
-- name: Build
-  image: gcc
+- name: Build and Test
+  image: ubuntu:19.04
   commands:
-  - apt search g++
-  - apt-get install g++ boost libboost-all-dev cmake-data cmake
-  - cmake .
-  - make
-  - ./ket_jm 1 3/2 
+    - apt-get update -y
+    - apt-get install -y make gcc g++ cmake perl libboost-all-dev
+    - cmake .
+    - make
+    - ./wigner
