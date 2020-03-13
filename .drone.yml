@@ -14,3 +14,7 @@ steps:
     - cmake .
     - make
     - ./wigner
+
+trigger:
+  event:
+    exclude: [ promote ]
