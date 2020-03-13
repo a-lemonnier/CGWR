@@ -1,0 +1,18 @@
+
+---
+kind: pipeline
+type: kubernetes
+name: test-on-amd64
+
+platform:
+  arch: amd64
+
+steps:
+- name: test
+  image: gcc
+  commands:
+  - ./configure
+  - make
+  - ./wigner 
+
+---
