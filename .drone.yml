@@ -1,18 +1,14 @@
 kind: pipeline
-name: test-on-amd64
+name: build-and-test-amd64
 
 platform:
   arch: amd64
 
 steps:
-- name: test
+- name: Build
   image: gcc
   commands:
-  - git clone https://github.com/Kitware/CMake.git
-  - cd CMake
-  - ./configure
-  - make && make install
-  - cd ..
+  - apt install g++-7 libboost-all-dev cmake-data cmake
   - cmake .
   - make
   - ./wigner 
