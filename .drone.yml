@@ -7,7 +7,7 @@ platform:
 
 steps:
 - name: Build and Test
-  image: ubuntu:19.04
+  image: ubuntu:19.10
   commands:
     - apt-get update -y
     - apt-get install -y make gcc g++ cmake perl libboost-all-dev
